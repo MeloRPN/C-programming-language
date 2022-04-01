@@ -1,0 +1,387 @@
+Disclaimer: Using portuguese language on descriptions and commands.
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+int main()
+{
+setlocale (LC_ALL, "portuguese");//set para a língua portuguesa
+
+int opcao = 10;
+while (opcao > 0){
+    printf("\nDigite qual exercício quer executar (digite 0 para encerrar):");
+    scanf ("%d",&opcao);
+    printf("\n--------------\n");
+        if (opcao == 1)
+        ex1();
+        else
+        if (opcao == 2)
+        ex2();
+        else
+        if (opcao == 3)
+        ex3();
+        if (opcao == 4)
+        ex4();
+        if (opcao == 5)
+        ex5();
+        if (opcao == 6)
+        ex6();
+        if (opcao == 7)
+        ex7();
+        if (opcao == 8)
+        ex8();
+        if (opcao == 9)
+        ex9();
+        if (opcao ==10)
+        ex10();
+    printf("\n--------------\n");
+}
+return 0;
+}
+
+void ex1() {
+printf("\nexecutando ex1");
+//Fazer um algoritmo que leia um numero inteiro e mostre uma mensagem indicando se este numero e par ou impar.
+
+int numero;
+
+printf("\nDigite um número para sabermos se é par ou ímpar: ");
+scanf("%d", &numero);
+    if(numero%2!=0)
+        {
+        printf("O número %d é ímpar.", numero);
+        }
+        else
+        {
+        printf("O número %d é par.", numero);
+        }
+return;
+}
+
+void ex2() {
+printf("\nexecutando ex2");
+//Fazer um algoritmo que peça o nome e as 3 notas de um aluno e mostre, além do nome e do valor da media do aluno,
+//uma mensagem de "Aprovado", caso a media seja igual ou superior a 6, ou a mensagem "reprovado", caso
+//contrario.
+
+char aluno[99];
+float nota1,nota2,nota3,media;
+
+printf("\nInsira o nome do aluno(a): ");
+scanf("%s",&aluno);
+printf("\nInsira a primeira nota: ");
+scanf("%f",&nota1);
+printf("\nInsira a segunda nota: ");
+scanf("%f",&nota2);
+printf("\nInsira a terceira nota: ");
+scanf("%f",&nota3);
+
+media=(nota1+nota2+nota3)/3;
+
+    if(media>=6)
+        {
+        printf("\n%s com média %.1f está Aprovado",aluno,media);
+        }
+        else
+        {
+        printf("\n%s com média %.1f está Reprovado",aluno,media);
+        }
+return;
+}
+
+void ex3() {
+printf("\nexecutando ex3");
+// Fazer um algoritmo que leia a temperatura da água e mostre se está no estado solido, líquido ou gasoso.
+
+float temperatura;
+
+printf("\nInsira a temperatura da água em celsius: ");
+scanf("%f", &temperatura);
+    if(temperatura<=0)
+    {
+        printf("Estado sólido");
+    }
+    else if(temperatura>0&&temperatura<=100)
+    {
+        printf("Estado líquido");
+    }
+    else if(temperatura>100)
+    {
+        printf("Estado gasoso");
+    }
+return;
+}
+
+void ex4() {
+printf("\nexecutando ex4");
+//Leia um valor X e se ele for menor que 0 avalie Y = x^2 + 4. Se ele for maior que 0 avalie x^3 -3 e se ele for igual a 0 de
+//uma mensagem de erro.
+
+int X,Y;
+
+printf("\nInsira um valor para a variável X: ");
+scanf("%d",&X);
+    if(X<0)
+    {
+        Y=(X^2)+4;
+        printf("\nValor da expressão x^2+4: %d", Y);
+    }
+    else if(X>0)
+    {
+        Y=pow(X,3)-3;
+        printf("\nValor da expressão x^3-3: %d", Y);
+    }
+    else if(X==0)
+    {
+        printf("\nERRO!");
+    }
+return;
+}
+
+void ex5() {
+printf("\nexecutando exercício5");
+//Construa um algoritmo que receba como entrada três valores (A,B e C). Após o processamento o menor valor
+//deverá estar em A e o maior valor em C, e o valor intermediário em B. Imprima A,B e C.
+
+int A,B,C,menor,meio,maior;
+
+printf("\nInsira um valor para A: ");
+scanf("%d",&A);
+printf("\nInsira um valor para B: ");
+scanf("%d",&B);
+printf("\nInsira um valor para C: ");
+scanf("%d",&C);
+//printf("\n%d %d %d", A,B,C); procedimento de checagem
+//printf("\n%d %d %d", menor, meio, maior);//procedimento de checagem
+
+    if(A<B&&B<C){
+        menor=A;
+        meio=B;
+        maior=C;
+    }
+    else if(A<C&&C<B){
+        menor=A;
+        meio=C;
+        maior=B;
+    }
+    else if(B<A&&A<C){
+        menor=B;
+        meio=A;
+        maior=C;
+    }
+    else if(B<C&&C<A){
+        menor=B;
+        meio=C;
+        maior=A;
+    }
+    else if(C<B&&B<A){
+        menor=C;
+        meio=B;
+        maior=A;
+    }
+    else if(C<A&&A<B){
+        menor=C;
+        meio=A;
+        maior=B;
+    }
+A=menor;
+B=meio;
+C=maior;
+printf("\nValor de A é: %d; de B é: %d, de C é: %d", A,B,C);
+
+return;
+}
+
+void ex6() {
+printf("\nexecutando exercício6");
+//Desenvolver um algoritmo que leia três números inteiros: X, Y, Z e verifique se o número X é divisível por Y e por Z.
+//O algoritmo deverá mostrar as possíveis mensagens: o número X é divisível por Y e Z; o número é divisível por Y mas não por Z;o número é divisível por Z mas não por Y;
+//o número não é divisível nem Y nem por Z.
+
+int X,Y,Z;
+
+printf("Insira um valor para a variável X: ");
+scanf("%d",&X);
+printf("Insira um valor para a variável Y: ");
+scanf("%d",&Y);
+printf("Insira um valor para a variável Z: ");
+scanf("%d",&Z);
+    if((X%Y==0)&&(X%Z==0)){
+        printf("O número %d é divisível por %d e %d", X,Y,Z);
+    }
+    if((X%Y==0)&&(X%Z!=0)){
+        printf("O número %d é divisível por %d e mas não é divisível por %d", X,Y,Z);
+    }
+    if((X%Y!=0)&&(X%Z==0)){
+        printf("O número %d não é divisível por %d mas é divisível por %d", X,Y,Z);
+    }
+    if((X%Y!=0)&&(X%Z!=0)){
+        printf("O número %d não é divisível por %d e nem divisível por %d", X,Y,Z);
+    }
+return;
+}
+
+void ex7() {
+printf("\nexecutando exercício7");
+//O numero 3025 possui a seguinte característica: 30 + 25 = 55; 55^2 = 3025
+//Fazer um algoritmo que dado um numero de 4 dígitos (verifique se o número pertence a faixa) calcule e escreva se ele possui ou não esta característica.
+
+int numero,resto, quociente, soma;
+double quadrado;
+
+printf("Insira um número de 4 dígitos:");
+scanf("%d",&numero);
+while(numero<1000)
+{
+    printf("O número tem menos de 4 dígitos, digite um com 4 dígitos:");
+    scanf("%d",&numero);
+        while(numero>9999)
+    {
+        printf("O número tem mais de 4 dígitos, digite um com 4 dígitos:");
+        scanf("%d",&numero);
+    }
+}
+resto=numero%100;
+quociente=numero/100;
+soma=resto+quociente;
+quadrado=pow(soma,2);
+    if(numero==quadrado)
+{
+    printf("\nO número %d tem essa característica.", numero);
+}
+    else
+{
+    printf("\nO número %d não tem essa característica.", numero);
+}
+return;
+}
+
+void ex8() {
+printf("\nexecutando exercício8");
+//ler um código do teclado e mostrar o nome correspondente, de acordo com a lista :221 Bernardo, 211 Eustáquio,311 Luiz,312 Mário,332 Artur
+int numero=999;
+
+printf("\nInsira o código do aluno: ");
+scanf("%d",&numero);
+switch (numero)
+{
+    case 221:
+        printf("Bernardo");
+        break;
+    case 211:
+        printf("Eustáquio");
+        break;
+    case 311:
+        printf("Luiz");
+        break;
+    case 312:
+        printf("Mário");
+        break;
+    case 332:
+        printf("Artur");
+        break;
+    default:
+        printf("Código de aluno inválido");
+}
+return;
+}
+
+void ex9() {
+printf("\nexecutando exercício9");
+//Números palíndromos são aqueles que escritos da direita para esquerda ou da esquerda para direita tem o mesmo valor.
+//Exemplo:929, 44, 97379. Fazer um algoritmo que dado um numero de 5 dígitos; calcule e escreva se este e ou não palíndromo
+
+int numero, invertido, aux;
+printf("Digite um valor com 5 digitos: ");
+scanf("%d", &numero);
+
+while (numero<=0)
+{
+printf("Por favor, digite um valor de N maior do que zero ou com 5 digitos: ");
+scanf("%d", &numero);
+}
+
+invertido = 0;
+aux = numero;
+
+while (aux>0)
+{
+invertido = (invertido*10)+(aux % 10);
+aux = aux/10;
+}
+
+if(numero == invertido)
+{
+    printf("Sao palindromos.\n");
+}
+else
+{
+printf("Nao sao palindromos.\n");
+}
+
+return;
+}
+
+void ex10() {
+printf("\nexecutando exercício10");
+//Desenvolver um algoritmo para calcular a conta de água para a SANEAGO. O custo da água varia dependendo do tipo do
+//consumidor - residencial, comercial ou industrial. A regra para calcular a conta e:
+//• Residencial: R$ 75,00 de taxa mais R$ 3,50 por m3 gastos;
+//• Comercial: R$ 500,00 para os primeiros 80 m3 gastos mais R$ 5,50 por m3 gastos acima dos 80 m3;
+//• Industrial: R$ 800,00 para os primeiros 100 m3 gastos mais R$ 8,00 por m3 gastos acima dos 100 m3;
+//O algoritmo devera ler a conta do cliente, seu tipo (residencial, comercial e industrial) e o seu consumo de água em metros cubos.
+//Como resultado imprimir o valor a ser pago pelo mesmo.
+
+int opcao = 99;
+float metrosCubicos,valorConta;
+
+while (opcao > 0)
+    {
+    printf("\nDigite o número referente ao tipo de conta que quer executar");
+    printf("\n1 - Residencial");
+    printf("\n2 - Comercial");
+    printf("\n3 - Industrial");
+    printf("\nDigite 0 para encerrar");
+    printf("\nInsira o número referente ao tipo:");
+    scanf ("%d",&opcao);
+    printf("\nInsira a quantidade de água consumida em metros cúbicos:");
+    scanf("%f", &metrosCubicos);
+    printf("\n--------------\n");
+        if (opcao == 1)
+        {
+        valorConta=75+(metrosCubicos*3.50);
+        printf("\nO valor a ser pago é de:%.2f. Referente a quantidade de %.2f metros cúbicos de água. Tipo Residencial.", valorConta, metrosCubicos);
+        printf("\n--------------\n");
+        }
+        else if (opcao == 2)
+        {
+            if(metrosCubicos<=80)
+            {
+            valorConta=500;
+            }
+            else if(metrosCubicos>80)
+            {
+            valorConta=500+((metrosCubicos*5.50)-440);
+            }
+        printf("\nO valor a ser pago é de:%.2f. Referente a quantidade de %.2f metros cúbicos de água. Tipo Comercial.", valorConta, metrosCubicos);
+        printf("\n--------------\n");
+        }
+        else if (opcao == 3)
+        {
+            if(metrosCubicos<=100)
+            {
+            valorConta=800;
+            }
+            else if(metrosCubicos>100)
+            {
+            valorConta=800+((metrosCubicos*8)-800);
+            }
+            printf("\nO valor a ser pago é de:%.2f. Referente a quantidade de %.2f metros cúbicos de água. Tipo Industrial.", valorConta, metrosCubicos);
+            printf("\n--------------\n");
+        }
+    }
+return;
+}
