@@ -1,0 +1,344 @@
+##Lista 03 - AEDS 1 - Alguns dos exercícios recebi ajuda ou modifiquei (tanto do professor quanto de colegas)##
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+#include <string.h>
+#include <time.h>
+
+int main()
+{
+setlocale (LC_ALL, "Portuguese");//set para a língua portuguesa para todos os exercícios
+
+int opcao = 10;
+while (opcao > 0){
+    printf("\nDigite qual exercício quer executar (digite 0 para encerrar):");
+    scanf ("%d",&opcao);
+    printf("\n--------------\n");
+        if (opcao == 1)
+        ex1();
+        else
+        if (opcao == 2)
+        ex2();
+        else
+        if (opcao == 3)
+        ex3();
+        if (opcao == 4)
+        ex4();
+        if (opcao == 5)
+        ex5();
+        if (opcao == 6)
+        ex6();
+        if (opcao == 7)
+        ex7();
+        if (opcao == 8)
+        ex8();
+        if (opcao == 9)
+        ex9();
+        if (opcao ==10)
+        ex10();
+    printf("\n--------------\n");
+}
+return 0;
+}
+
+void ex1(){
+    printf("\nVocê está executando o exercício 1");
+//1 - Faça um algoritmo que leia um conjunto de números (X) e imprima a quantidade de números pares
+//(QPares) e a quantidade de números impares (QImpares) lidos. Admita que o valor 9999 é utilizado como
+//sentinela (FLAG) para fim de leitura. Ex.: 1,2,3,4,5,9999 => Pares=2 Impares=3
+
+int QPares=0, QImpares=0,n=0;//impedir alocação de restante de memória
+n=1;//impedir alocação de restante de memória
+printf("\nDigite os números desejados para sabermos a quantidade de ímpares e pares no conjunto\n(Digite 9999 para terminar):");
+scanf("%d", &n);
+while (n!=9999)
+    {
+        if(n%2!=0)
+        {
+            QImpares = QImpares +1;
+        }
+        else
+        {
+            QPares = QPares+1;
+        }
+        scanf("%d",&n);//para avaliar os valores inseridos no loop
+    }
+printf("\nQuantidade de valores ímpares: %d", QImpares);
+printf("\nQuantidade de valores pares: %d", QPares);
+
+    return;
+}
+
+void ex2(){
+//Faça um programa que leia um conjunto indeterminado de números inteiros positivos e imprima o maior, o
+//menor e a média aritmética desse conjunto de dados. (Flag -1).
+//Execute este programa para os seguintes valores
+//1.1,2,3,-1
+//2.3,2,1,-1
+//3.1,3,2,-1
+printf("\nVocê está executando o exercício 2");
+int maior, menor;
+float numero, media=0, soma=0, nlidos=0;
+numero=0;
+printf("\nInsira números inteiros e positivos e será mostrado o maior, o menor e a média desse conjunto: ");
+scanf("%f", &numero);
+while((numero-(int)numero>0)||numero<0)
+    {
+    printf("\nO número inserido não é inteiro ou não é positivo, insira um número INTEIRO e POSITIVO: ");
+    scanf("%f", &numero);
+    }
+menor = numero;
+maior = numero;
+while(numero!=-1&&numero>=0)//condição numero inteiro e positivo, flag = -1,
+{
+    nlidos = nlidos + 1;
+    soma = soma + numero;
+    media = soma/nlidos;
+    if (numero<menor)
+        {
+            menor=numero;
+        }
+    if (numero>maior)
+        {
+            maior=numero;
+        }
+    printf("\nDigite um o próximo valor (digite -1 para terminar): ");
+    scanf("%f", &numero);
+}
+printf("\n A média aritmética dos números inseridos é: %0.2f", media);// para delimitar numero de casas decimais é um (zero ponto) depois do ponto número de casas: %0.1f = 1 casa
+printf("\n A soma dos números inseridos é: %0.0f", soma);
+printf("\n O maior número do conjunto: %d", maior);
+printf("\n O menor número do conjunto: %d", menor);
+    return;
+}
+
+void ex3(){
+//Escrever um algoritmo em Portugol, para calcular e imprimir o fatorial de um número lido do teclado.
+//Ex. Fatorial de 5! = 5x4x3x2x1=120
+printf("\nVocê está executando o exercício 3");
+float numero=0;
+int fatorial=1, contador=1;
+printf("\nInsira um número para mostrarmos seu fatorial, deve ser positivo e inteiro: ");
+scanf("%f", &numero);
+while((numero-(int)numero>0)||numero<0)//condição positivo e inteiro
+    {
+    printf("\nO número inserido não é inteiro ou não é positivo, insira um número INTEIRO e POSITIVO: ");
+    scanf("%f", &numero);
+    }
+while(contador<=numero)
+    {
+    fatorial=fatorial*contador;
+    contador=contador+1;
+    }
+    printf("\nO fatorial do número %.0f é: %d", numero, fatorial);
+    return;
+}
+
+void ex4(){
+//Calcule o valor da seguinte série lido a quantidade de termos:
+//S=1-(1/3^3)+(1/5^3)-(1/7^3)+(1/9^3)-...
+printf("Você está executando o exercício 4");
+int i, numero, NTermos;
+float S, fracao;
+printf ("\nDigite a quantidade de N termos: ");
+scanf("%d",&NTermos);
+i=1;
+numero=1;
+S=0;
+while (i<=NTermos )
+    {
+    fracao=1.0/(numero*numero*numero);
+    if (i%2==0)
+        {
+        fracao=fracao*(-1);
+        }
+        S=S+fracao;
+        numero=numero+2;
+        i=i+1;
+    }
+printf ("\nTotal da série S é %f",S);
+return;
+}
+
+void ex5(){
+//A série de fibonacci é formada pela seqüência:
+//1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+//Escreva um algoritmo que peça um número N maior que 2. Gere e imprima a série até este n-ésimo termo.
+printf("\nVocê está executando o exercício 5");
+int numero,a,b,c,contagem;
+printf("\nInsira um número, maior que 2, para N e será mostrado a série de Fibonnaci de N termos: ");
+scanf("%d",&numero);
+while(numero<=2)//condição, N maior que 2
+    {
+    printf("\n O número é igual ou menor à 2, insira um número maior que 2: ");
+    scanf("%d",&numero);
+    }
+a=1;
+b=1;
+printf("%d %d", a,b);
+contagem=2;
+while (contagem<numero)
+    {
+    c=a+b;
+    printf(" %d",c);
+    a=b;
+    b=c;
+    contagem=contagem+1;
+    }
+    return;
+}
+
+void ex6(){
+//Fazer um algoritmo para calcular o valor de s, dado por, sendo o valor de N deverá se lido do teclado
+//S=(1/N)-(2/N-1)+3/(N-2)-4(N-3)+N/1...
+printf("Você está executando o exercício 6");
+int n, i;
+float S;
+printf("\nEscolha o valor de n:");
+scanf("%d", &n);
+i = 1;
+while (i <= n )
+    {
+        if ( i % 2 == 0 )//uso de artificio por impar para fazer o ciclo de + ou -
+        {
+        S = S - i / (n - (i - 1.0));//forçar o número de float
+        }
+        else
+        {
+        S = S + i / (n - (i - 1.0));
+        }
+        i++;//contador
+    }
+    printf("%f\n", S);
+    return;
+}
+
+void ex7(){
+//Números palíndromos são aqueles que escritos da direita para esquerda ou da esquerda para direita
+//tem o mesmo valor. Exemplo:929, 44, 97379. Fazer um algoritmo que imprima todos os números
+//palíndromos de 10000 a 99999.
+    printf("\nVocê está executando o exercício 7");
+    printf("\nVocê está executando um algoritmo que mostra todos os palíndromos de 10000 a 99999:");
+// os "a' são as casas
+int a1,a2,a3,a4,a5,i,aux,espelho;
+i=10000;
+while(i<100000)
+    {
+    i++;
+    a1 = i / 10000;
+    aux = i % 10000;
+    a2 = aux / 1000;
+    aux = aux % 1000;
+    a3 = aux / 100;
+    aux = aux % 100;
+    a4 = aux / 10;
+    a5 = aux % 10;
+    espelho = (a5 * 10000) + (a4 * 1000) + (a3 * 100) + (a2 * 10) + a1;
+        if (i == espelho)
+        {
+            printf("\nPalíndromo: %d", i);
+        }
+    }
+return;
+}
+
+void ex8(){
+printf("\nVocê está executando o exercício 8");
+printf("\nO numero 3025 possui a seguinte característica:");
+printf("\n30 + 25 = 55");
+printf("\n55^2 = 3025");
+printf("\nQuantos e quais são os números de 4 dígitos possuem essa característica?");
+int numero,qtde,resto,quociente,soma;
+double quadrado;
+numero=2025;
+qtde=0;
+while(numero<=9999)
+    {
+    resto=numero%100;
+    quociente=numero/100;
+    soma=resto+quociente;
+    quadrado=pow(soma,2);
+    if(numero==quadrado)
+        {
+            printf("\n O número %d tem a característica pedida", numero);
+            qtde=qtde+1;
+        }
+        numero=numero+1;
+    }
+    printf("\n A quantidade de números encontrados: %d", qtde);
+return;
+}
+
+void ex9(){
+//Faça um programa para um jogo de cara ou coroa. Neste caso, o jogador escolhe cara ou coroa (0 –
+//cara e 1 – para coroa) mostre ao final de 10 tentativas, quantas foram certas e quantas erradas.
+//(utilize o comando - para que o computador escolha o resultado).
+    printf("\nVocê está executando o exercício 9");
+int cara,coroa,i,chance,moeda;
+printf("\nDigite 0 para cara ou 1 para coroa.\n");
+scanf("%d", &moeda);
+cara=0;
+coroa=0;
+srand(time(NULL));
+if (moeda==1)
+{
+for (int i= 0; i<10; i++)
+    {
+        chance=rand()%2;
+        if(chance==1)
+            {
+            coroa=coroa+1;
+            }
+        printf("\nLance: %d",chance);
+    }
+printf("\nSaíram %d coroas em 10 lances", coroa);
+}
+if (moeda==0)
+    {
+for (int i= 0; i<10; i++)
+    {
+        chance=rand()%2;
+        if(chance==0)
+            {
+            cara=cara+1;
+            }
+            printf("\nLance: %d",chance);
+    }
+printf("\nSaíram %d caras em 10 lances", cara);
+}
+    return;
+}
+
+void ex10(){
+//Faça um programa para adivinhar um número escolhido pelo usuário, entre 1 e 1023. Indique ao
+//final quantas tentativas foram necessárias. O programa deverá localizar o número escolhido pelo
+//usuário em no máximo 10 tentativas!
+//Utilize a seguinte proposta. Pegue o valor intermediário e pergunte ao usuário se o número é
+//igual(=), maior(>) ou menor(<) que o que foi escolhido. Se for (=) implica que acertou! Se for maior
+//escolha agora o número intermediário entre o que foi perguntado e o último, caso contrário escolha o
+//intermediário entre o primeiro e o que foi perguntado, seguindo assim até acertar!
+//Verifique que você conseguirá acertar qualquer número em no máximo 10 tentativas!!!
+printf("Você está executando o exercício 10");
+int i, numero, sorteado;
+printf("\nGerando 10 valores aleatórios...");
+srand(time(NULL));
+sorteado = rand() % 1023 + 1;
+i = 1;
+while ( i <= 10)
+{
+printf("\n\nTentativa %d",i);
+printf("\nDigite seu numero da sorte!:\n");
+scanf("%d",&numero);
+if (numero < sorteado)
+printf("\nTente um número maior!");
+if (numero > sorteado)
+printf("\nTente um número menor!");
+if ( numero == sorteado)
+printf("\nBINGO! Você acertou!");
+        i = i + 1;
+}
+printf("Suas tentativas acabaram!");
+return;
+}
